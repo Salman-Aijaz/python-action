@@ -1,0 +1,37 @@
+name: Python Output Artifact
+
+on:
+  push:
+    branches:
+      - main  # Change this to the branch you want to trigger the action on
+  pull_request:
+    branches:
+      - main  # Change this to the branch you want to trigger the action on
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'  # Specify the Python version you want to use
+
+    - name: Install dependencies
+      run: |
+        # If you have any dependencies, install them here
+        # pip install -r requirements.txt
+        echo "No dependencies to install."
+
+    - name: Run the Python script
+      run: python generate_output.py
+
+    - name: Upload output artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: output-artifact
+        path: output.txt
