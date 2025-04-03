@@ -24,7 +24,7 @@ jobs:
           python csv_to_json.py input.csv output.json
 
       - name: Upload JSON as artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: json-artifact
           path: output.json
