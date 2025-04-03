@@ -22,5 +22,6 @@ jobs:
       - name: Convert CSV to JSON
         run: |
           python csv_to_json.py input.csv output.json
+          echo hello > output.json
 
 
