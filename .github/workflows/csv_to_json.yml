@@ -22,6 +22,7 @@ jobs:
       - name: Convert CSV to JSON
         run: |
           python csv_to_json.py input.csv output.json
+          mv output.json ./public
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
