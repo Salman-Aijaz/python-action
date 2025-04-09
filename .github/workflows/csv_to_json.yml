@@ -1,4 +1,4 @@
-name: Convert CSV to JSON
+name: Convert CSV to JSON and Deploy
 
 on: [push]
 
@@ -17,15 +17,15 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pandas
+          pip install -r requirements.txt
 
       - name: Convert CSV to JSON
         run: |
-          python csv_to_json.py input.csv output.json
+          mkdir -p output
+          python csv_to_json.py input.csv output/output.json
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
-          publish_branch: gh-pages
+          publish_dir: ./output
