@@ -7,8 +7,8 @@ def csv_to_json(csv_file, json_file):
     # Read the CSV file
     df = pd.read_csv(csv_file)
     
-    # Convert to JSON and save
-    df.to_json(json_file, orient='records', lines=True)
+    # Convert to JSON and save (without 'lines=True')
+    df.to_json(json_file, orient='records')  # Remove lines=True here
 
 def generate_html(json_file, html_file):
     with open(json_file) as f:
